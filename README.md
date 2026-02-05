@@ -2,7 +2,7 @@
 
 # 🤖 Windows AI Agent
 
-### *Your Intelligent Desktop Companion*
+### _Your Intelligent Desktop Companion_
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -10,7 +10,7 @@
 ![Status](https://img.shields.io/badge/status-active-success)
 ![AI Powered](https://img.shields.io/badge/AI-Google%20Gemini-orange)
 
-*A sophisticated AI-powered desktop assistant leveraging Google Gemini's advanced capabilities to transform natural language into powerful Windows automation, intelligent task execution, and seamless desktop control.*
+_A sophisticated AI-powered desktop assistant leveraging Google Gemini's advanced capabilities to transform natural language into powerful Windows automation, intelligent task execution, and seamless desktop control._
 
 [Features](#-features) • [Installation](#️-installation) • [Usage](#-usage) • [Documentation](#-documentation) • [Contributing](#-contributing)
 
@@ -25,6 +25,7 @@
 <td width="50%">
 
 ### 🧠 **AI Intelligence**
+
 - 🔮 **Google Gemini Pro Integration**
   - Advanced natural language understanding
   - Context-aware conversation memory
@@ -40,6 +41,7 @@
 <td width="50%">
 
 ### 🎨 **User Experience**
+
 - 🖥️ **Modern PyQt6 Interface**
   - Beautiful, intuitive chat UI
   - Dark/Light theme support
@@ -57,6 +59,7 @@
 <td width="50%">
 
 ### 🤖 **Automation Capabilities**
+
 - 🎯 **Desktop Control**
   - Window management
   - Application launching
@@ -73,6 +76,7 @@
 <td width="50%">
 
 ### 🔧 **Advanced Features**
+
 - ⚡ **Safe Code Execution**
   - Sandboxed Python environment
   - Real-time code running
@@ -115,6 +119,7 @@ graph LR
 <td>
 
 ### System Requirements
+
 - 💻 **OS**: Windows 10/11 (64-bit)
 - 🐍 **Python**: 3.8 or higher
 - 💾 **RAM**: 4GB minimum (8GB recommended)
@@ -124,6 +129,7 @@ graph LR
 <td>
 
 ### Required Accounts & Keys
+
 - 🔑 **Google AI Studio API Key** ([Get it here](https://makersuite.google.com/app/apikey))
 - 🌐 Internet connection for AI features
 - 🛡️ Administrator rights (for some automation features)
@@ -207,6 +213,7 @@ pip install -r requirements.txt
 ```
 
 **Core Dependencies:**
+
 - `google-generativeai` - Google Gemini API
 - `PyQt6` - Modern UI framework
 - `python-dotenv` - Environment configuration
@@ -263,13 +270,13 @@ The chat window should appear, and you're ready to interact with your AI agent!
 
 ### 🚨 Troubleshooting Installation
 
-| Issue | Solution |
-|-------|----------|
+| Issue                 | Solution                                                           |
+| --------------------- | ------------------------------------------------------------------ |
 | `ModuleNotFoundError` | Ensure virtual environment is activated and dependencies installed |
-| `API Key Invalid` | Verify your Google API key in `.env` file |
-| `PyQt6 Import Error` | Install Visual C++ Redistributables from Microsoft |
-| `Permission Denied` | Run terminal as Administrator for automation features |
-| `Port Already in Use` | Close other applications or change port in config |
+| `API Key Invalid`     | Verify your Google API key in `.env` file                          |
+| `PyQt6 Import Error`  | Install Visual C++ Redistributables from Microsoft                 |
+| `Permission Denied`   | Run terminal as Administrator for automation features              |
+| `Port Already in Use` | Close other applications or change port in config                  |
 
 ---
 
@@ -341,7 +348,7 @@ intents:
       - "take a screenshot"
       - "capture screen"
     action: "capture_screenshot"
-    
+
   open_app:
     patterns:
       - "open {app}"
@@ -373,6 +380,7 @@ intents:
 ```
 
 **Features:**
+
 - Full screen or active window capture
 - Auto-save with custom names
 - Clipboard integration
@@ -392,6 +400,7 @@ intents:
 ```
 
 **Supported Apps:**
+
 - Native Windows apps (Calculator, Notepad, Paint, etc.)
 - Microsoft Office suite
 - Popular browsers (Chrome, Firefox, Edge)
@@ -411,6 +420,7 @@ intents:
 ```
 
 **Capabilities:**
+
 - File creation, deletion, moving
 - Content reading and writing
 - Search and filtering
@@ -434,7 +444,7 @@ intents:
 <details>
 <summary><b>💻 Code Execution</b></summary>
 
-````
+```
 "Run this Python code:
 import random
 print(f'Lucky number: {random.randint(1, 100)}')"
@@ -444,9 +454,10 @@ for i in range(5):
     print(f'Count: {i}')"
 
 "Calculate the factorial of 10 using Python"
-````
+```
 
 **Safety Features:**
+
 - Restricted imports (no system-critical modules)
 - Execution timeout
 - Error handling and reporting
@@ -523,15 +534,15 @@ Agent: I'll generate a backup script for you...
 
 ### ⌨️ Keyboard Shortcuts
 
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl + Enter` | Send message |
-| `Ctrl + L` | Clear conversation |
-| `Ctrl + S` | Save conversation |
-| `Ctrl + N` | New conversation |
-| `Ctrl + M` | Minimize to tray |
-| `Ctrl + Q` | Quit application |
-| `F1` | Show help |
+| Shortcut       | Action             |
+| -------------- | ------------------ |
+| `Ctrl + Enter` | Send message       |
+| `Ctrl + L`     | Clear conversation |
+| `Ctrl + S`     | Save conversation  |
+| `Ctrl + N`     | New conversation   |
+| `Ctrl + M`     | Minimize to tray   |
+| `Ctrl + Q`     | Quit application   |
+| `F1`           | Show help          |
 
 ---
 
@@ -677,12 +688,14 @@ We love contributions! Whether it's bug reports, feature requests, or code contr
 ### 🌟 How to Contribute
 
 1. **Fork the repository**
+
    ```bash
    # Click the "Fork" button on GitHub
    git clone https://github.com/YOUR-USERNAME/windows_ai_agent.git
    ```
 
 2. **Create a feature branch**
+
    ```bash
    git checkout -b feature/amazing-feature
    ```
@@ -694,12 +707,14 @@ We love contributions! Whether it's bug reports, feature requests, or code contr
    - Update documentation as needed
 
 4. **Commit your changes**
+
    ```bash
    git add .
    git commit -m "✨ Add amazing feature"
    ```
 
 5. **Push to your fork**
+
    ```bash
    git push origin feature/amazing-feature
    ```
@@ -740,6 +755,7 @@ Thanks to all the amazing contributors who have helped build this project!
 ## 🗺️ Roadmap
 
 ### 🎯 Current Version (v1.0)
+
 - ✅ Google Gemini integration
 - ✅ Basic desktop automation
 - ✅ File operations
@@ -864,6 +880,7 @@ Found a security vulnerability? Please report it privately:
 <summary><b>What AI models does this support?</b></summary>
 
 Currently supports Google Gemini models:
+
 - `gemini-1.5-pro` (recommended) - Most capable, best for complex tasks
 - `gemini-1.5-flash` - Faster, more cost-effective for simple queries
 
@@ -903,6 +920,7 @@ Yes! Edit `config/intents.yaml` to add custom intent patterns. Plugin system for
 <summary><b>What's the difference between this and other AI assistants?</b></summary>
 
 Unlike cloud-based assistants, this agent:
+
 - ✅ Runs locally on your machine
 - ✅ Has direct Windows system access
 - ✅ Can execute arbitrary Python code
@@ -916,6 +934,7 @@ Unlike cloud-based assistants, this agent:
 <summary><b>Can it access the internet?</b></summary>
 
 Currently, the agent itself doesn't browse the web, but it can:
+
 - Open web browsers
 - Launch URLs
 - Execute code that makes HTTP requests
@@ -940,56 +959,57 @@ Check the [CHANGELOG](CHANGELOG.md) for breaking changes.
 ---
 
 **Note**: This project requires appropriate permissions for desktop automation features. Some antivirus software may flag automation capabilities - please add exceptions as needed.
-#   w i n d o w s _ a i _ a g e n t 
+#   w i n d o w s * a i * a g e n t 
  
  
+
 ---
 
-##  Support & Community
+## Support & Community
 
-###  Get Help
+### Get Help
 
--  **Documentation**: Check [docs/](docs/) folder
--  **Bug Reports**: [Create an issue](https://github.com/hegdeshashank100/windows_ai_agent/issues/new?template=bug_report.md)
--  **Feature Requests**: [Request a feature](https://github.com/hegdeshashank100/windows_ai_agent/issues/new?template=feature_request.md)
--  **Discussions**: [GitHub Discussions](https://github.com/hegdeshashank100/windows_ai_agent/discussions)
--  **Email**: support@yourproject.com
+- **Documentation**: Check [docs/](docs/) folder
+- **Bug Reports**: [Create an issue](https://github.com/hegdeshashank100/windows_ai_agent/issues/new?template=bug_report.md)
+- **Feature Requests**: [Request a feature](https://github.com/hegdeshashank100/windows_ai_agent/issues/new?template=feature_request.md)
+- **Discussions**: [GitHub Discussions](https://github.com/hegdeshashank100/windows_ai_agent/discussions)
+- **Email**: support@yourproject.com
 
-###  Community
+### Community
 
--  **Discord**: [Join our server](https://discord.gg/your-invite)
--  **Twitter**: [@your_handle](https://twitter.com/your_handle)
--  **YouTube**: [Video tutorials](https://youtube.com/@your_channel)
--  **Blog**: [Project updates](https://blog.yourproject.com)
+- **Discord**: [Join our server](https://discord.gg/your-invite)
+- **Twitter**: [@your_handle](https://twitter.com/your_handle)
+- **YouTube**: [Video tutorials](https://youtube.com/@your_channel)
+- **Blog**: [Project updates](https://blog.yourproject.com)
 
-###  Show Your Support
+### Show Your Support
 
 If you find this project helpful, please consider:
 
--  **Star this repository** on GitHub
--  **Report bugs** and suggest features
--  **Share** with others who might benefit
--  **Contribute** code, docs, or ideas
--  **Sponsor** the project ([GitHub Sponsors](https://github.com/sponsors/hegdeshashank100))
+- **Star this repository** on GitHub
+- **Report bugs** and suggest features
+- **Share** with others who might benefit
+- **Contribute** code, docs, or ideas
+- **Sponsor** the project ([GitHub Sponsors](https://github.com/sponsors/hegdeshashank100))
 
 ---
 
-##  Acknowledgments
+## Acknowledgments
 
 ### Built With
 
--  [Google Gemini](https://ai.google.dev/) - Advanced AI capabilities
--  [PyQt6](https://www.riverbankcomputing.com/software/pyqt/) - Beautiful UI framework
--  [Python](https://www.python.org/) - Core language
--  [PyAutoGUI](https://pyautogui.readthedocs.io/) - Desktop automation
--  [psutil](https://github.com/giampaolo/psutil) - System monitoring
+- [Google Gemini](https://ai.google.dev/) - Advanced AI capabilities
+- [PyQt6](https://www.riverbankcomputing.com/software/pyqt/) - Beautiful UI framework
+- [Python](https://www.python.org/) - Core language
+- [PyAutoGUI](https://pyautogui.readthedocs.io/) - Desktop automation
+- [psutil](https://github.com/giampaolo/psutil) - System monitoring
 
 ### Inspired By
 
--  GitHub Copilot - AI-powered coding assistant
--  ChatGPT - Conversational AI
--  AutoHotkey - Windows automation
--  Jarvis (Iron Man) - The ultimate AI assistant
+- GitHub Copilot - AI-powered coding assistant
+- ChatGPT - Conversational AI
+- AutoHotkey - Windows automation
+- Jarvis (Iron Man) - The ultimate AI assistant
 
 ### Special Thanks
 
@@ -1002,13 +1022,13 @@ If you find this project helpful, please consider:
 
 <div align="center">
 
-###  Star History
+### Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=hegdeshashank100/windows_ai_agent&type=Date)](https://star-history.com/#hegdeshashank100/windows_ai_agent&Date)
 
 ---
 
-**Made with  by [Shashank Hegde](https://github.com/hegdeshashank100)**
+**Made with by [Shashank Hegde](https://github.com/hegdeshashank100)**
 
 [ Back to Top](#-windows-ai-agent)
 
