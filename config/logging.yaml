@@ -1,0 +1,100 @@
+# Logging Configuration for Windows AI Agent
+
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  detailed:
+    format: "{time:YYYY-MM-DD HH:mm:ss} | {level} | {name}:{function}:{line} | {message}"
+
+  simple:
+    format: "{time:HH:mm:ss} | {level} | {message}"
+
+  json:
+    format: '{"timestamp": "{time:YYYY-MM-DD HH:mm:ss}", "level": "{level}", "module": "{name}", "function": "{function}", "line": {line}, "message": "{message}"}'
+
+handlers:
+  console:
+    level: INFO
+    formatter: simple
+    colorize: true
+
+  file:
+    level: DEBUG
+    formatter: detailed
+    rotation: "10 MB"
+    retention: "7 days"
+    compression: "zip"
+
+  error_file:
+    level: ERROR
+    formatter: detailed
+    rotation: "5 MB"
+    retention: "30 days"
+
+  json_file:
+    level: INFO
+    formatter: json
+    rotation: "50 MB"
+    retention: "14 days"
+
+loggers:
+  agent:
+    level: DEBUG
+    handlers: [console, file]
+    propagate: false
+
+  automation:
+    level: INFO
+    handlers: [console, file]
+    propagate: false
+
+  ui:
+    level: INFO
+    handlers: [console, file]
+    propagate: false
+
+  gemini:
+    level: INFO
+    handlers: [console, file, error_file]
+    propagate: false
+
+  security:
+    level: WARNING
+    handlers: [console, file, error_file]
+    propagate: false
+
+# Log levels by environment
+environments:
+  development:
+    root_level: DEBUG
+    enable_console: true
+    enable_file_logging: true
+
+  production:
+    root_level: INFO
+    enable_console: false
+    enable_file_logging: true
+
+  testing:
+    root_level: WARNING
+    enable_console: true
+    enable_file_logging: false
+
+# Special logging rules
+special_rules:
+  # Log all API calls
+  api_calls:
+    level: INFO
+    include_request_body: true
+    include_response_body: false
+
+  # Log security events
+  security_events:
+    level: WARNING
+    immediate_flush: true
+
+  # Log performance metrics
+  performance:
+    level: DEBUG
+    sample_rate: 0.1 # Log 10% of performance events

@@ -1,0 +1,44 @@
+# Core AI and API requirements
+google-generativeai>=0.7.2
+openai>=1.3.0
+
+# GUI Framework
+PyQt6>=6.6.0
+PyQt6-Qt6>=6.6.0
+
+# Windows automation and system integration
+pyautogui>=0.9.54
+pywin32>=306
+psutil>=5.9.0
+win32gui
+win32con
+win32api
+
+# Web and networking
+requests>=2.31.0
+websockets>=11.0
+httpx>=0.25.0
+
+# Data handling and processing
+pandas>=2.1.0
+numpy>=1.24.0
+pillow>=10.0.0
+opencv-python>=4.8.0
+
+# Configuration and environment
+python-dotenv>=1.0.0
+pydantic>=2.4.0
+pyyaml>=6.0
+
+# Logging and monitoring
+loguru>=0.7.0
+rich>=13.5.0
+
+# Security and sandboxing
+RestrictedPython>=6.2
+subprocess32
+
+# Utilities
+click>=8.1.0
+tqdm>=4.66.0
+colorama>=0.4.6

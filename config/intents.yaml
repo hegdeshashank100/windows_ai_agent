@@ -1,0 +1,253 @@
+# Intent Schema Configuration for Windows AI Agent
+
+intents:
+  # Screenshot and Image Operations
+  take_screenshot:
+    category: "automation"
+    description: "Capture screenshot of the screen"
+    patterns:
+      - "take\\s+(?:a\\s+)?screenshot(?:\\s+(?:and\\s+)?save\\s+(?:it\\s+)?(?:to\\s+)?(?P<save_path>\\S+))?"
+      - "screenshot(?:\\s+save\\s+(?:to\\s+)?(?P<save_path>\\S+))?"
+      - "capture\\s+(?:the\\s+)?screen(?:\\s+(?:to\\s+)?(?P<save_path>\\S+))?"
+    parameters:
+      save_path:
+        type: "path"
+        required: false
+        default: "desktop"
+        description: "Path to save the screenshot"
+    examples:
+      - "take a screenshot"
+      - "screenshot and save to desktop"
+      - "capture screen to C:/images/screen.png"
+    requires_confirmation: false
+
+  # Mouse and Click Operations
+  click_coordinates:
+    category: "automation"
+    description: "Click at specific screen coordinates"
+    patterns:
+      - "click\\s+(?:at\\s+)?(?P<coordinates>\\d+[,\\s]+\\d+)(?:\\s+(?P<button>left|right|middle))?(?:\\s+(?P<clicks>\\d+)\\s+times?)?"
+      - "(?P<button>left|right|middle)?\\s*click\\s+(?P<coordinates>\\d+[,\\s]+\\d+)"
+    parameters:
+      coordinates:
+        type: "coordinates"
+        required: true
+        description: "X,Y coordinates to click"
+      button:
+        type: "string"
+        required: false
+        default: "left"
+        description: "Mouse button to use"
+      clicks:
+        type: "int"
+        required: false
+        default: 1
+        description: "Number of clicks"
+    examples:
+      - "click at 500,300"
+      - "right click 100,200"
+      - "click 400,250 2 times"
+
+  # Text Input Operations
+  type_text:
+    category: "automation"
+    description: "Type text using keyboard simulation"
+    patterns:
+      - "type\\s+[\\\"'](?P<text>.*?)[\\\"'](?:\\s+with\\s+interval\\s+(?P<interval>\\d+(?:\\.\\d+)?))?"
+      - "write\\s+[\\\"'](?P<text>.*?)[\\\"']"
+      - "enter\\s+(?:the\\s+)?text\\s+[\\\"'](?P<text>.*?)[\\\"']"
+    parameters:
+      text:
+        type: "string"
+        required: true
+        description: "Text to type"
+      interval:
+        type: "float"
+        required: false
+        default: 0.01
+        description: "Delay between keystrokes"
+    examples:
+      - 'type "Hello World"'
+      - 'write "This is a test message"'
+      - 'enter text "My document content"'
+
+  # Application Management
+  open_application:
+    category: "application"
+    description: "Open common Windows applications"
+    patterns:
+      - "open\\s+(?P<app_name>calculator|notepad|explorer|chrome|firefox|edge|cmd|powershell)"
+      - "launch\\s+(?P<app_name>calculator|notepad|explorer|chrome|firefox|edge|cmd|powershell)"
+      - "start\\s+(?P<app_name>calculator|notepad|explorer|chrome|firefox|edge|cmd|powershell)"
+    parameters:
+      app_name:
+        type: "string"
+        required: true
+        description: "Name of application to open"
+        validation_pattern: "^(calculator|notepad|explorer|chrome|firefox|edge|cmd|powershell)$"
+    examples:
+      - "open calculator"
+      - "launch notepad"
+      - "start explorer"
+
+  # Window Management
+  minimize_window:
+    category: "automation"
+    description: "Minimize windows"
+    patterns:
+      - "minimize(?:\\s+(?:the\\s+)?(?:window\\s+)?(?P<window_title>.*?))?"
+      - "minimize\\s+all\\s+windows"
+    parameters:
+      window_title:
+        type: "string"
+        required: false
+        description: "Title of specific window to minimize"
+    examples:
+      - "minimize"
+      - "minimize notepad"
+      - "minimize all windows"
+
+  maximize_window:
+    category: "automation"
+    description: "Maximize windows"
+    patterns:
+      - "maximize(?:\\s+(?:the\\s+)?(?:window\\s+)?(?P<window_title>.*?))?"
+    parameters:
+      window_title:
+        type: "string"
+        required: false
+        description: "Title of specific window to maximize"
+    examples:
+      - "maximize"
+      - "maximize chrome"
+
+  close_window:
+    category: "automation"
+    description: "Close windows"
+    patterns:
+      - "close(?:\\s+(?:the\\s+)?(?:window\\s+)?(?P<window_title>.*?))?"
+    parameters:
+      window_title:
+        type: "string"
+        required: false
+        description: "Title of specific window to close"
+    examples:
+      - "close window"
+      - "close notepad"
+    requires_confirmation: true
+
+  # File System Operations
+  create_file:
+    category: "file_system"
+    description: "Create new files"
+    patterns:
+      - "create\\s+(?:a\\s+)?(?:new\\s+)?file\\s+(?:named\\s+)?[\\\"']?(?P<filename>[^\\\"']+)[\\\"']?(?:\\s+with\\s+content\\s+[\\\"'](?P<content>.*?)[\\\"'])?"
+      - "new\\s+file\\s+(?P<filename>\\S+)(?:\\s+content\\s+[\\\"'](?P<content>.*?)[\\\"'])?"
+    parameters:
+      filename:
+        type: "path"
+        required: true
+        description: "Name/path of file to create"
+      content:
+        type: "string"
+        required: false
+        default: ""
+        description: "Initial file content"
+    examples:
+      - "create file todo.txt"
+      - 'create a new file called "notes.txt" with content "My notes"'
+      - "new file test.py"
+
+  create_folder:
+    category: "file_system"
+    description: "Create new folders/directories"
+    patterns:
+      - "create\\s+(?:a\\s+)?(?:new\\s+)?(?:folder|directory)\\s+(?:named\\s+)?[\\\"']?(?P<folder_name>[^\\\"']+)[\\\"']?"
+      - "new\\s+(?:folder|directory)\\s+(?P<folder_name>\\S+)"
+      - "mkdir\\s+(?P<folder_name>\\S+)"
+    parameters:
+      folder_name:
+        type: "path"
+        required: true
+        description: "Name/path of folder to create"
+    examples:
+      - "create folder Documents"
+      - "new directory Projects"
+      - "mkdir C:/temp/new_folder"
+
+  # System Information
+  system_information:
+    category: "system_info"
+    description: "Display system information and status"
+    patterns:
+      - "(?:show|get|display)\\s+system\\s+(?:info|information)(?:\\s+(?P<info_type>cpu|memory|disk|network))?"
+      - "system\\s+status"
+      - "computer\\s+(?:info|information)"
+      - "pc\\s+(?:info|specs|specifications)"
+    parameters:
+      info_type:
+        type: "string"
+        required: false
+        default: "general"
+        description: "Type of system information"
+    examples:
+      - "show system info"
+      - "get system information cpu"
+      - "computer info"
+      - "system status"
+
+  # Keyboard Shortcuts
+  send_hotkey:
+    category: "automation"
+    description: "Send keyboard shortcuts"
+    patterns:
+      - "press\\s+(?P<keys>[a-zA-Z0-9+\\s]+)"
+      - "hotkey\\s+(?P<keys>[a-zA-Z0-9+\\s]+)"
+      - "keyboard\\s+shortcut\\s+(?P<keys>[a-zA-Z0-9+\\s]+)"
+    parameters:
+      keys:
+        type: "string"
+        required: true
+        description: "Keys to press (e.g., 'ctrl+c', 'alt+tab')"
+    examples:
+      - "press ctrl+c"
+      - "hotkey alt+tab"
+      - "keyboard shortcut win+r"
+
+  # Process Management
+  kill_process:
+    category: "system"
+    description: "Terminate running processes"
+    patterns:
+      - "kill\\s+(?:process\\s+)?(?P<process_name>\\w+)"
+      - "terminate\\s+(?P<process_name>\\w+)"
+      - "end\\s+(?:process\\s+)?(?P<process_name>\\w+)"
+    parameters:
+      process_name:
+        type: "string"
+        required: true
+        description: "Name of process to terminate"
+    examples:
+      - "kill notepad"
+      - "terminate chrome"
+      - "end process calculator"
+    requires_confirmation: true
+
+# Global Settings
+settings:
+  confidence_threshold: 0.6
+  default_confirmation_required: false
+  case_sensitive: false
+  fuzzy_matching: true
+
+  # Safety settings
+  dangerous_operations:
+    - "kill_process"
+    - "close_window"
+    - "delete_file"
+    - "format_drive"
+
+  confirmation_required_for:
+    - "kill_process"
+    - "close_window"
+    - "delete_file"
